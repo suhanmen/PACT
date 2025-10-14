@@ -1,0 +1,10 @@
+def find_max(words):
+    max_word = ""
+    max_count = 0
+    for word in words:
+        unique_chars = set(word)
+        count = len(unique_chars)
+        if count > max_count or (count == max_count and word < max_word):
+            max_word = word
+            max_count = count
+    return max_word

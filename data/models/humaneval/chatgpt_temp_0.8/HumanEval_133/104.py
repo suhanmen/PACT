@@ -1,0 +1,6 @@
+def sum_squares(lst):
+    total = 0
+    for num in lst:
+        num = int(num + 0.5)
+        total += num ** 2
+    return total

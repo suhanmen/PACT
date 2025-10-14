@@ -1,0 +1,13 @@
+# CANNOT PARSE CODE SNIPPET
+from typing import List
+
+
+def intersperse(numbers: List[int], delimiter: int) -> List[int]:
+    """Insert a number 'delimiter' between every two consecutive elements of input list `numbers'"""
+    if len(numbers) == 0:
+        return []
+    result = [numbers[0]]
+    for number in numbers[1:]:
+        result.append(delimiter)
+        result.append(number)
+    return result

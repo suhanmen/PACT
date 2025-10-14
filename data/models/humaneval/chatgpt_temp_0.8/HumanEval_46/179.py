@@ -1,0 +1,9 @@
+# CANNOT PARSE CODE SNIPPET
+def fib4(n: int) -> int:
+    if n < 2:
+        return 0
+    f0, f1, f2, f3 = 0, 0, 2, 0
+    for i in range(3, n+1):
+        f3 = f2 + f1 + f0
+        f0, f1, f2 = f1, f2, f3
+    return f3

@@ -1,0 +1,11 @@
+# CANNOT PARSE CODE SNIPPET
+def fibfib(n: int) -> int:
+    if n == 0:
+        return 0
+    elif n == 1 or n == 2:
+        return 1
+    else:
+        a, b, c = 1, 1, 2
+        for i in range(3, n+1):
+            a, b, c = b, c, a+b+c
+        return a

@@ -1,0 +1,18 @@
+def how_many_times(string: str, substring: str) -> int:
+    """ Find how many times a given substring can be found in the original string. Count overlapping cases.
+    >>> how_many_times('', 'a')
+    0
+    >>> how_many_times('aaa', 'a')
+    3
+    >>> how_many_times('aaaa', 'aa')
+    3
+    """
+    count = 0
+    start = 0
+    while True:
+        start = string.find(substring, start) # find first occurrence of substring after start
+        if start == -1: # if no more occurrences, break loop
+            break
+        count += 1
+        start += 1 # move the starting point to the next character
+    return count

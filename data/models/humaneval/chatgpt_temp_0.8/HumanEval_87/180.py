@@ -1,0 +1,13 @@
+def get_row(lst, x):
+    coordinates = []
+    for i in range(len(lst)):
+        if x in lst[i]:
+            for j in range(len(lst[i])):
+                if lst[i][j] == x:
+                    coordinates.append((i, j))
+    sorted_coordinates = sorted(coordinates, key=lambda x: x[0])
+    for i in range(len(sorted_coordinates)):
+        for j in range(i + 1, len(sorted_coordinates)):
+            if sorted_coordinates[i][0] == sorted_coordinates[j][0] and sorted_coordinates[i][1] < sorted_coordinates[j][1]:
+                sorted_coordinates[i], sorted_coordinates[j] = sorted_coordinates[j], sorted_coordinates[i]
+    return sorted_coordinates

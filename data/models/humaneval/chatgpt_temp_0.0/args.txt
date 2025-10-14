@@ -1,0 +1,1 @@
+Namespace(model='chatgpt', bs=1, temperature=0.0, dataset='humaneval', root='/JawTitan/EvalPlus', n_samples=1, resume=False, use_contracts='no', greedy=True)

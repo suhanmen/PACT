@@ -1,0 +1,11 @@
+# CANNOT PARSE CODE SNIPPET
+def will_it_fly(q, w):
+    # Check if the input list is a palindrome
+    if q == q[::-1]:
+        # Check if the sum of the elements is less than or equal to the maximum possible weight
+        if sum(q) <= w:
+            return True
+        else:
+            return False
+    else:
+        return False

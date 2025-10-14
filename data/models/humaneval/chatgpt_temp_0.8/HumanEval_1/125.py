@@ -1,0 +1,18 @@
+from typing import List
+
+
+def separate_paren_groups(paren_string: str) -> List[str]:
+    groups = []
+    count = 0
+    current_group = ""
+    for char in paren_string.replace(" ", ""):
+        if char == "(":
+            count += 1
+            current_group += char
+        elif char == ")":
+            count -= 1
+            current_group += char
+            if count == 0:
+                groups.append(current_group)
+                current_group = ""
+    return groups

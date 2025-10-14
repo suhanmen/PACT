@@ -1,0 +1,15 @@
+def odd_count(lst):
+    """
+    Given a list of strings, where each string consists of only digits, return a list.
+    Each element i of the output should be "the number of odd elements in the
+    string i of the input." where all the i's should be replaced by the number
+    of odd digits in the i'th string of the input.
+    """
+    output_lst = []
+    for num_str in lst:
+        odd_count = 0
+        for digit in num_str:
+            if int(digit) % 2 != 0:
+                odd_count += 1
+        output_lst.append("the number of odd elements in the string {} of the input.".format(odd_count))
+    return output_lst

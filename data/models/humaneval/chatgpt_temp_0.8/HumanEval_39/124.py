@@ -1,0 +1,22 @@
+python
+def prime_fib(n: int):
+    """
+    prime_fib returns n-th number that is a Fibonacci number and it's also prime.
+    """
+    def is_prime(num: int) -> bool:
+        """
+        is_prime checks whether a given number is prime or not.
+        """
+        if num < 2:
+            return False
+        for i in range(2, int(num**0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
+    
+    fib = [0, 1]
+    while len(fib) < n + 1:
+        fib.append(fib[-1] + fib[-2])
+    for num in fib:
+        if is_prime(num):
+            return num

@@ -1,0 +1,32 @@
+def pairs_sum_to_zero(l):
+    """
+    pairs_sum_to_zero takes a list of integers as an input.
+    it returns True if there are two distinct elements in the list that
+    sum to zero, and False otherwise.
+    >>> pairs_sum_to_zero([1, 3, 5, 0])
+    False
+    >>> pairs_sum_to_zero([1, 3, -2, 1])
+    False
+    >>> pairs_sum_to_zero([1, 2, 3, 7])
+    False
+    >>> pairs_sum_to_zero([2, 4, -5, 3, 5, 7])
+    True
+    >>> pairs_sum_to_zero([1])
+    False
+    """
+    # check if the list has at least 2 elements
+    if len(l) < 2:
+        return False
+    
+    # create a set of the elements in the list
+    s = set(l)
+    
+    # iterate through each element in the list
+    for x in l:
+        # check if the negative of the element is in the set
+        if -x in s:
+            # if so, return True
+            return True
+    
+    # if no such pair was found, return False
+    return False

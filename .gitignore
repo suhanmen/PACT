@@ -1,0 +1,11 @@
+__pycache__/
+evaluation*/
+output_base*/
+output_full*/
+output_debug*/
+grammar_test*/
+log*/
+api_key.env/
+debug.py
+*_ignore.py
+output_our
