@@ -31,7 +31,7 @@ Unlike traditional benchmarks that measure only *functional correctness* through
 It extends HumanEval+ and MBPP+ with contract-violating test suites, enabling a more complete view of model robustness.
 Through **SMT-based test generation** and **contract-adherence metrics**, PACT offers the first principled framework for measuring how reliably LLMs enforce contracts in code generation.
 
-The above figure is a running example of PACT with an Example-Augmented Specification (EAS) prompt, which integrates Contract Specification (CS) and contract-violating test cases (CVTs) to enforce contract-aware code generation.
+The above figure is a running example of PACT with an Example-Augmented Specification (EAS) prompt, which integrates Contract Specification (CS) and Contract-Violating Test cases (CVTs) to enforce contract-aware code generation.
 
 ---
 ### 🔹 How PACT Works
