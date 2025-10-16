@@ -1,14 +1,14 @@
 # Do large language models respect contracts? Evaluating and enforcing contract-adherence in code generation
 
 <p align="center">
-  <a href="https://github.com/suhanmen/PACT_local/stargazers">
-    <img src="https://img.shields.io/github/stars/suhanmen/PACT_local?style=social" alt="GitHub Repo stars">
+  <a href="https://github.com/suhanmen/PACT/stargazers">
+    <img src="https://img.shields.io/github/stars/suhanmen/PACT?style=social" alt="GitHub Repo stars">
   </a>
-  <a href="https://github.com/suhanmen/PACT_local/commits/main">
-    <img src="https://img.shields.io/github/last-commit/suhanmen/PACT_local" alt="GitHub last commit">
+  <a href="https://github.com/suhanmen/PACT/commits/main">
+    <img src="https://img.shields.io/github/last-commit/suhanmen/PACT" alt="GitHub last commit">
   </a>
-  <a href="https://github.com/suhanmen/PACT_local/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/suhanmen/PACT_local?color=orange" alt="GitHub contributors">
+  <a href="https://github.com/suhanmen/PACT/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/suhanmen/PACT?color=orange" alt="GitHub contributors">
   </a>
 </p>
 
