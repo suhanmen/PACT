@@ -1,108 +1,81 @@
-# DO LARGE LANGUAGE MODELS RESPECT CON-TRACTS? EVALUATING AND ENFORCING CONTRACT ADHERENCE IN CODE GENERATION
+# Do large language models respect contracts? Evaluating and enforcing contract-adherence in code generation
 
-📖 [Paper](https://~~~~~)
+<p align="center">
+  <a href="https://github.com/suhanmen/PACT_local/stargazers">
+    <img src="https://img.shields.io/github/stars/suhanmen/PACT_local?style=social" alt="GitHub Repo stars">
+  </a>
+  <a href="https://github.com/suhanmen/PACT_local/commits/main">
+    <img src="https://img.shields.io/github/last-commit/suhanmen/PACT_local" alt="GitHub last commit">
+  </a>
+  <a href="https://github.com/suhanmen/PACT_local/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/suhanmen/PACT_local?color=orange" alt="GitHub contributors">
+  </a>
+</p>
 
-This repository support the paper "DO LARGE LANGUAGE MODELS RESPECT CON-TRACTS? EVALUATING AND ENFORCING CONTRACT ADHERENCE IN CODE GENERATION".
+<div align="center">
+    <a href="https://arxiv.org/abs/2510.12047"><b>Paper Link</b>📖</a>
+</div><br>
 
 
-## Updates
-- 10/10/2025
+## 📰 News
+- 📢 NEW! **"Do large language models respect contracts? Evaluating and enforcing contract-adherence in code generation"** is now on arXiv. (Oct 14, 2025)
+- 📢 NEW! The official **PACT** framework has been released on GitHub. (Oct 14, 2025)
 
-## Abstract
-Prevailing code generation benchmarks, such as HumanEval+ and MBPP+, primarily evaluate large language models (LLMs) with *pass@k* on functional correctness using well-formed inputs.
-However, they ignore a crucial aspect of real-world software: adherence to *contracts*—the preconditions and validity constraints that dictate how ill-formed inputs must be rejected.
+## 🔍 Motivation
+<p align="center">
+  <img src="figures/motivation.png" alt="Motivation Figure" width="60%">
+</p>
 
-This critical oversight means that existing benchmarks fail to measure, and models consequently fail to generate, truly robust and reliable code snippets.
-We introduce **PACT**, a program assessment and contract-adherence evaluation framework, to bridge this gap.
-PACT is the first framework designed to systematically evaluate and enhance contract-adherence in LLM-generated code snippets alongside functional correctness.
-PACT's contributions are threefold:
-First, it provides a comprehensive test-suite corpus focused on contract violations, extending HumanEval+ and MBPP+.
-Second, it enables a systematic analysis of code generation under varied prompting conditions. This analysis demonstrates that augmenting prompts with contract-violating test cases significantly enhance a model's ability to respect contracts compared to using contract description alone.
-Finally, it introduces novel metrics to rigorously quantify contract adherence in both test generation and code generation.
-By revealing critical errors that conventional benchmarks overlook, PACT provides the rigorous and interpretable metrics
-to evaluate the robustness of LLM-generated code snippets in both functionality and contract-adherence.
+Large Language Models can generate working code—but can they generate safe code? **PACT** goes beyond pass@k accuracy to ask a deeper question: “Does the model respect the rules of the program?” By testing how models handle invalid inputs and preconditions, PACT reveals hidden weaknesses in current benchmarks and provides a new standard for contract-aware code evaluation.
 
-## About PACT
-![Full Picture](figures/example.png)
-
+## ✨ About PACT
 **PACT** is a novel framework for evaluating and enhancing contract adherence in LLM-generated code.
 Unlike traditional benchmarks that measure only *functional correctness* through *pass@k* on well-formed inputs, PACT systematically assesses whether generated programs respect preconditions and input validation rules (contracts).
 
 It extends HumanEval+ and MBPP+ with contract-violating test suites, enabling a more complete view of model robustness.
 Through **SMT-based test generation** and **contract-adherence metrics**, PACT offers the first principled framework for measuring how reliably LLMs enforce contracts in code generation.
 
-The above figure is a running example of PACT with an Example-Augmented Specification (EAS) prompt, which integrates Contract Specification (CS) and Contract-Violating Test cases (CVTs) to enforce contract-aware code generation.
 
----
-### 🔹 How PACT Works
-PACT operates in **two main stages** to evaluate and enhance **contract adherence** in LLM-generated code.
+The above figure is a running example of PACT with an Example-Augmented Specification (EAS) prompt, which integrates Contract Specification (CS) and contract-violating test cases (CVTs) to enforce contract-aware code generation.
 
-### **Step 1: Contract-Violating Test Generation**
-- PACT begins by translating **natural-language contract descriptions** (e.g., input bounds, type constraints, error-handling rules) into a **formal representation** using **Algebraic Data Types (ADT)**.  
-- The resulting ADT schema is passed to an **SMT solver (Z3)**, which systematically generates **Contract-Violating Test Cases (CVTs)**.  
-- These CVTs are designed to **violate one or more contracts** while ensuring all remaining conditions stay valid, allowing precise testing of boundary behavior.  
-- This stage ensures that generated test cases are **logically consistent**, **semantically valid**, and directly tied to the intended specification.  
-- The quality of generated CVTs is evaluated using **two novel metrics proposed by PACT**:  
-  - **Assert Violation Coverage (AVC)** – measures how many contracts are successfully tested by violations.  
-  - **Target Specificity (TS)** – measures how accurately each test case targets the intended contract violations.  
+## 🚀 What makes PACT valuable?
+✅ **Introduces contract awareness as a new evaluation perspective** – PACT shifts the focus from pure *functional correctness* to whether LLMs understand and respect **contracts**,  such as preconditions and input constraints.  
 
-### **Step 2: Contract-Aware Code Generation**
-- The generated **CVTs** are used to evaluate and guide LLMs during code generation.  
-- PACT compares model behavior under two prompting settings:  
-  - **Contract Specification (CS)** – includes only functional and natural-language contract descriptions.  
-  - **Example-Augmented Specification (EAS)** – augments the CS prompt with the **CVTs** from Step 1, giving explicit examples of invalid inputs.  
-- By contrasting these two settings, PACT reveals how concrete violation examples improve a model’s ability to **detect and handle contract-violating test cases**, leading to more reliable and contract-aware code generation.
-- The generated code snippets are then evaluated using **three novel contract-adherence metrics proposed by PACT**:  
-  - **Assert Violation Coverage (AVC)** – *same metric as in Step 1*, but here it measures how effectively the **generated code** detects and rejects contract-violating inputs (runtime enforcement).
-  - **Assertion Alignment Recall (AAR)** – measures how many ground-truth contracts are correctly implemented.  
-  - **Assertion Alignment Precision (AAP)** – measures how accurate and relevant the generated assertions are.  
----
+✅ **Defines novel and interpretable metrics for contract adherence** – PACT introduces four new metrics — **AVC**, **TS**, **AAR**, and **AAP** —  to rigorously measure how well models detect and enforce contracts in both test generation and code generation.  
 
-### **🚀 PACT Achievements**
-✅ **Introduces contract awareness as a new evaluation perspective** – PACT shifts the focus from pure functional correctness to whether LLMs understand and respect *contracts* such as preconditions and input constraints.  
-✅ **Proposes novel metrics for measuring contract adherence** – PACT defines rigorous, interpretable metrics (AVC, TS, AAR, AAP) to quantify how well models enforce these contracts.  
-✅ **Reveals how reliably LLMs follow contracts in practice** – Through systematic experiments on HumanEval+ and MBPP+, PACT demonstrates that models often overlook contractual rules, and quantifies their improvements when guided by contract-violating test cases.
-
----
-
-### Results of PACT on Contract-Adherence Benchmarks
-<b>HumanEval+</b></h3>
-
-| Model          | Mode |  pass@1 ↑ |   AVC ↑   |   AAR ↑   |   AAP ↑   |   AVG ↑   |
-| :------------- | :--- | :-------: | :-------: | :-------: | :-------: | :-------: |
-| **gemma-3**    | CS   | **84.41** |   24.85   |   11.41   |   14.04   |   32.79   |
-|                | EAS  |   82.94   | **91.02** | **28.07** | **27.77** | **57.45** |
-| **DeepSeek**   | CS   | **73.78** |   44.12   |   15.65   |   16.97   |   37.63   |
-|                | EAS  |   71.77   | **79.29** | **27.62** | **28.01** | **51.67** |
-| **Qwen3**      | CS   | **78.92** |   28.04   |   13.17   |   22.55   |   35.67   |
-|                | EAS  |   77.83   | **87.81** | **31.53** | **36.09** | **58.31** |
-| **Phi-4-plus** | CS   | **72.23** |   52.91   |   18.78   | **21.09** |   41.25   |
-|                | EAS  |   67.08   | **69.50** | **21.33** |   20.06   | **44.49** |
-
-<b>MBPP+</b></h3>
-
-| Model          | Mode |  pass@1 ↑ |   AVC ↑   |   AAR ↑   |   AAP ↑   |   AVG ↑   |
-| :------------- | :--- | :-------: | :-------: | :-------: | :-------: | :-------: |
-| **gemma-3**    | CS   |   78.56   |   57.99   |   17.50   |   17.93   |   41.49   |
-|                | EAS  | **78.60** | **95.57** | **32.29** | **31.82** | **59.57** |
-| **DeepSeek**   | CS   | **62.53** |   64.20   |   17.59   |   17.57   |   40.47   |
-|                | EAS  |   60.15   | **86.70** | **28.23** | **27.94** | **45.47** |
-| **Qwen3**      | CS   |   72.41   |   70.86   |   21.09   |   22.99   |   46.84   |
-|                | EAS  | **72.63** | **94.85** | **31.54** | **32.30** | **57.83** |
-| **Phi-4-plus** | CS   | **64.89** |   67.33   |   24.26   |   24.65   |   45.28   |
-|                | EAS  |   63.76   | **74.88** | **29.20** | **28.95** | **49.20** |
+✅ **Reveals hidden weaknesses in current benchmarks** – Through systematic experiments on **HumanEval+** and **MBPP+**, PACT uncovers that many “functionally correct” programs fail to enforce basic contracts, and demonstrates how contract-violating test cases substantially improve robustness.
 
 
----
+## 📈 Results
+Our comprehensive evaluation across 4 LLMs (Gemma-3, DeepSeek-R1, Qwen-3, Phi-4-plus) on HumanEval+ and MBPP+ reveals several key findings:
 
-## Installation
+* **Contract-aware test generation** – PACT’s two-stage LLM + SMT solver pipeline produced logically consistent contract-violating test cases (CVTs), achieving an average +12.8 pp improvement in Target Specificity (TS) over direct LLM generation while maintaining high Assert Violation Coverage (AVC). This demonstrates the precision of PACT’s targeted violation generation.
+
+* **Prompting strategy matters** – Augmenting the Contract Specification (CS) prompt with CVTs (Example-Augmented Specification, EAS) boosted contract adherence metrics by +33.7 pp (AVC), +11.6 pp (AAR), and +9.9 pp (AAP) on average. Concrete examples help LLMs explicitly learn how to enforce contracts.
+
+* **Trade-off with functional correctness** – While EAS substantially improves contract robustness, it induces a slight drop in pass@1 for well-formed inputs. This reflects a core tension between functional accuracy and robust contract enforcement.
+
+For detailed quantitative results and case analyses, please refer to our paper.
+
+
+## 🛠️ Setup
+
+### Requirements
 ~~~shell
 conda env create --file setting/environment.yaml
 conda activate PACT
 ~~~
 Clone the repository and set up the environment.
 
-## Getting Started
+### Datasets
+* `HumanEvalPlus.jsonl` — The main benchmark dataset containing 164 contract-aware programming problems. Version v0.1.1 is used in our experiments.
+* `MBPPPlus.jsonl` — The few-shot dataset consisting of 378 examples used for model prompting and evaluation. Version v0.2.0 is used in our experiments.
+
+
+
+
+
+## ⚡ Quickstart
 The following scripts guide you through running PACT step by step:
 
 ### **1️⃣ CVTs Genration**
@@ -150,3 +123,17 @@ Each script performs the following functions:
 - **Evaluation:** Assesses generated code for both functionality and contract adherence using the proposed metrics: **AVC**, **AAR**, and **AAP**, which measure how effectively the model enforces and aligns with contracts.  
 
 Each script in this stage supports **detailed configuration options** that can be adjusted within the corresponding shell files.
+
+
+## 🔖 Citation
+```
+@misc{lim2025largelanguagemodelsrespect,
+      title={Do Large Language Models Respect Contracts? Evaluating and Enforcing Contract-Adherence in Code Generation}, 
+      author={Soohan Lim and Joonghyuk Hahn and Hyunwoo Park and Sang-Ki Ko and Yo-Sub Han},
+      year={2025},
+      eprint={2510.12047},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2510.12047}, 
+}
+```
