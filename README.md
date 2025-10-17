@@ -68,11 +68,8 @@ conda activate PACT
 Clone the repository and set up the environment.
 
 ### Datasets
-* `HumanEvalPlus.jsonl` — The main benchmark dataset containing 164 contract-aware programming problems. Version v0.1.1 is used in our experiments.
-* `MBPPPlus.jsonl` — The few-shot dataset consisting of 378 examples used for model prompting and evaluation. Version v0.2.0 is used in our experiments.
-
-
-
+* `HumanEvalPlus.jsonl` — A benchmark dataset consisting of 164 programming problems, used end-to-end for CVT generation and code-generation evaluation. Version **v0.1.1** was used in our experiments.
+* `MBPPPlus.jsonl` — A benchmark dataset consisting of 378 programming problems, used end-to-end for CVT generation and code-generation evaluation. Version **v0.2.0** was used in our experiments.
 
 
 ## ⚡ Quickstart
