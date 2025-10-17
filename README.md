@@ -125,17 +125,3 @@ Each script performs the following functions:
 - **Evaluation:** Assesses generated code for both functionality and contract adherence using the proposed metrics: **AVC**, **AAR**, and **AAP**, which measure how effectively the model enforces and aligns with contracts.  
 
 Each script in this stage supports **detailed configuration options** that can be adjusted within the corresponding shell files.
-
-
-## 🔖 Citation
-```
-@misc{lim2025largelanguagemodelsrespect,
-      title={Do Large Language Models Respect Contracts? Evaluating and Enforcing Contract-Adherence in Code Generation}, 
-      author={Soohan Lim and Joonghyuk Hahn and Hyunwoo Park and Sang-Ki Ko and Yo-Sub Han},
-      year={2025},
-      eprint={2510.12047},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2510.12047}, 
-}
-```
