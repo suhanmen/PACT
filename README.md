@@ -59,15 +59,8 @@ For detailed quantitative results and case analyses, please refer to our paper.
 
 
 ## 🛠️ Setup
-
-### Requirements
-~~~shell
-conda env create --file setting/environment.yaml
-conda activate PACT
-~~~
-Clone the repository and set up the environment.
-
 ### Datasets
+The datasets used in this research are available in the data/ directory:
 * `HumanEvalPlus.jsonl` — A benchmark dataset consisting of 164 programming problems, used end-to-end for CVT generation and code-generation evaluation. Version **v0.1.1** was used in our experiments.
 * `MBPPPlus.jsonl` — A benchmark dataset consisting of 378 programming problems, used end-to-end for CVT generation and code-generation evaluation. Version **v0.2.0** was used in our experiments.
 
@@ -75,7 +68,19 @@ Clone the repository and set up the environment.
 ## ⚡ Quickstart
 The following scripts guide you through running PACT step by step:
 
-### **1️⃣ CVTs Genration**
+### **Step 1: Clone the Repository**
+~~~shell
+git clone https://github.com/suhanmen/PACT.git
+cd PACT
+~~~
+
+### **Step 2: Set up the enviroment**
+~~~shell
+conda env create --file setting/environment.yaml
+conda activate PACT
+~~~
+
+### **Step 3: CVTs Genration**
 ~~~shell
 ### STEP 1: Generation
 sh ./scripts/generation_gpt/gpt_main.sh
@@ -104,7 +109,7 @@ Each script performs the following functions:
 Each script in this stage supports **detailed configuration options** that can be adjusted within the corresponding shell files.
 
 
-### **2️⃣ Code Generation**
+### **Step 4: Code Generation**
 ~~~shell
 ### STEP 1: Generation
 sh ./scripts/generation_test_case_or_code_generation/main.sh
